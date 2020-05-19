@@ -56,6 +56,6 @@ int main(void) {
 		len = send(client_fd, buffer, strlen(buffer), 0);
 		len = recv(client_fd, buffer, BUFFER_SIZE, 0);
 		buffer[len] = '\0';
-		printf("Receive from server:\n%s\n", buffer);
+		printf("Receive from client:\n%s\n", buffer);
 	}
 }
