@@ -39,13 +39,16 @@ int main(int argc, char *argv[]) {
 	while (1) {
 		printf("Input the message:\n");
 		fgets(buffer, BUFFER_SIZE, stdin);
-		if(strcmp(buffer, "quit") == 0) {
+		if(buffer[0] == 'Q' && buffer[1] == 'q') {
 			break;
 		}
 		len = send(client_fd, buffer, strlen(buffer), 0);
 		len = recv(client_fd, buffer, BUFFER_SIZE, 0);
-		buffer[len] = '\0';
-		printf("Receive from server:\n%s\n", buffer);
+		if (len != 0) {
+			buffer[len] = '\0';
+			printf("Receive from server:\n%s\n", buffer);
+		}
+		
 	}
 
 	close(client_fd);
