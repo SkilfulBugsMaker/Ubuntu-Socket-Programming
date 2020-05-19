@@ -11,7 +11,7 @@
 #include <arpa/inet.h>
 
 #define BUFFER_SIZE 1024
-
+#define SERVER_IP "127.0.0.1" // add your ip here
 
 int main(int argc, char *argv[]) {
 	
@@ -21,7 +21,7 @@ int main(int argc, char *argv[]) {
 	int len;
 	memset(&remote_addr,0,sizeof(remote_addr));
 	remote_addr.sin_family = AF_INET;
-	remote_addr.sin_addr.s_addr = inet_addr("182.92.87.240"); // set server IP
+	remote_addr.sin_addr.s_addr = inet_addr(SERVER_IP); // set server IP
 	remote_addr.sin_port = htons(8000); // set server port
 	if((client_fd = socket(PF_INET, SOCK_STREAM, 0)) < 0) {
 		printf("Socket error!\n");
