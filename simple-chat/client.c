@@ -11,7 +11,8 @@
 #include <arpa/inet.h>
 
 #define BUFFER_SIZE 1024
-#define SERVER_IP "127.0.0.1" // add your ip here
+#define SERVER_IP "" // add your ip here
+
 
 int main(int argc, char *argv[]) {
 	
