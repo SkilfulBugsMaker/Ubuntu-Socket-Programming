@@ -43,6 +43,7 @@ int main(int argc, char *argv[]) {
 			break;
 		}
 		len = send(client_fd, buffer, strlen(buffer), 0);
+		len = 0;
 		len = recv(client_fd, buffer, BUFFER_SIZE, 0);
 		if (len != 0) {
 			buffer[len] = '\0';
