@@ -19,9 +19,9 @@ int main(void) {
     struct sockaddr_in my_addr;
 	struct sockaddr_in remote_addr;
     int len;
-    memset(&my_addr, 0, sizeof(my_addr)); //数据初始化--清零
-	my_addr.sin_family = AF_INET; //设置为IP通信
-	my_addr.sin_addr.s_addr = INADDR_ANY;//服务器IP地址--允许连接到所有本地地址上
+    memset(&my_addr, 0, sizeof(my_addr)); 
+	my_addr.sin_family = AF_INET; 
+	my_addr.sin_addr.s_addr = INADDR_ANY;
 	my_addr.sin_port = htons(8000);
     if((server_fd = socket(PF_INET, SOCK_STREAM, 0)) < 0) {  
 		printf("Socket error!\n");
@@ -44,13 +44,13 @@ int main(void) {
 	}
     fcntl(client_fd, F_SETFL, O_NONBLOCK); // set non blocking
 	printf("accept client %s\n",inet_ntoa(remote_addr.sin_addr));
-	len = send(client_fd, "Connection Setup!\n", 18, 0);//发送欢迎信息
+	len = send(client_fd, "Connection Setup!\n", 18, 0); // send welcome message
 	
-	/*接收客户端的数据并将其发送给客户端--recv返回接收到的字节数，send返回发送的字节数*/
+	
 	while (1) {
 		printf("Input the message:\n");
 		fgets(buffer, BUFFER_SIZE, stdin);
-		if(!strcmp(buffer, "quit")) {
+		if(strcmp(buffer, "quit") == 0) {
 			break;
 		}
 		len = send(client_fd, buffer, strlen(buffer), 0);

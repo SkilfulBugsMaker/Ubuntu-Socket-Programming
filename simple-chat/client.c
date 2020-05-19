@@ -39,7 +39,7 @@ int main(int argc, char *argv[]) {
 	while (1) {
 		printf("Input the message:\n");
 		fgets(buffer, BUFFER_SIZE, stdin);
-		if(!strcmp(buffer, "quit")) {
+		if(strcmp(buffer, "quit") == 0) {
 			break;
 		}
 		len = send(client_fd, buffer, strlen(buffer), 0);
