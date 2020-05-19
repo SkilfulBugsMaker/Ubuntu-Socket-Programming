@@ -43,9 +43,8 @@ int main(int argc, char *argv[]) {
 			break;
 		}
 		len = send(client_fd, buffer, strlen(buffer), 0);
-		len = 0;
 		len = recv(client_fd, buffer, BUFFER_SIZE, 0);
-		if (len != 0) {
+		if (len != -1) {
 			buffer[len] = '\0';
 			printf("Receive from server:\n%s\n", buffer);
 		}
